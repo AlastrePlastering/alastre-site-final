@@ -1060,7 +1060,10 @@ export default function Page() {
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
         <div className="absolute inset-0">
           <img
-            src="/images/backgroundalastre.jpg"
+            src="public/images/backgroundalastre.jpg
+
+page.tsx
+→ src="/images/backgroundalastre.jpg""
           
             alt="Construction background"
             className="h-full w-full scale-105 object-cover opacity-35"
