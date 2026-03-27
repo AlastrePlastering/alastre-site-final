@@ -1158,7 +1158,8 @@ export default function Page() {
                   <p className="mt-1 text-xs leading-6 text-zinc-300">
                     Alastre Shell handles structural concrete, block, slabs, driveways,
                     and shell execution. 
-                    
+                    </p>
+                  <p
                     Alastre Plastering handles framing, drywall,
                     finish, and stucco.
                   </p>
