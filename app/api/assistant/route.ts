@@ -10,7 +10,10 @@ export async function POST(req: Request) {
     const { message } = await req.json();
 
     if (!message || typeof message !== "string") {
-      return NextResponse.json({ reply: "No message provided" }, { status: 400 });
+      return NextResponse.json(
+        { reply: "No message provided" },
+        { status: 400 }
+      );
     }
 
     if (!process.env.OPENAI_API_KEY) {
@@ -26,7 +29,7 @@ export async function POST(req: Request) {
         {
           role: "system",
           content:
-            "You are a construction assistant. Only answer construction questions. Help with calculations like concrete, drywall, block, and stucco. Never give pricing.",
+            "You are a construction assistant. You can answer in English or Spanish depending on the user's language. Only answer construction questions. Help with calculations like concrete, drywall, block, stucco, and framing. Never give pricing.",
         },
         {
           role: "user",
@@ -36,13 +39,15 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({
-      reply: response.choices[0].message.content ?? "No response generated.",
+      reply: response.choices[0]?.message?.content ?? "No response generated.",
     });
-  } catch (error) {
-    console.error("OpenAI route error:", error);
+  } catch (error: any) {
+    console.error("🔥 ERROR FULL:", error);
 
     return NextResponse.json(
-      { reply: "Server error. Check API key or server logs." },
+      {
+        reply: error?.message || "Server error. Check API key or server logs.",
+      },
       { status: 500 }
     );
   }
