@@ -1060,7 +1060,7 @@ export default function Page() {
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
         <div className="absolute inset-0">
           <img
-            src="images/backgroundalastre.jpg
+            src="/images/backgroundalastre.jpg"
             alt="Construction background"
             className="h-full w-full scale-105 object-cover opacity-35"
           />
@@ -1154,20 +1154,12 @@ export default function Page() {
                   <p className="text-[10px] uppercase tracking-[0.24em] text-zinc-400">
                     Division Focus
                   </p>
+                  <p className="mt-2 text-sm font-semibold">Core Divisions</p>
                   <p className="mt-1 text-xs leading-6 text-zinc-300">
-  <p className="mt-1 text-xs leading-6 text-zinc-300">
-  <span className="block">
-    Alastre Shell handles structural concrete, block, slabs, driveways,
-    and shell execution.
-  </span>
-
-  <span className="block my-2 h-px w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60" />
-
-  <span className="block">
-    Alastre Plastering handles framing, drywall,
-    finish, and stucco.
-  </span>
-</p>
+                    Alastre Shell handles structural concrete, block, slabs, driveways,
+                    and shell execution. Alastre Plastering handles framing, drywall,
+                    finish, and stucco.
+                  </p>
                 </div>
               ) : (
                 <div>
@@ -1869,4 +1861,5 @@ export default function Page() {
       </section>
     </div>
   );
+}
 }
