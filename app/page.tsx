@@ -1157,7 +1157,9 @@ export default function Page() {
                   <p className="mt-2 text-sm font-semibold">Core Divisions</p>
                   <p className="mt-1 text-xs leading-6 text-zinc-300">
                     Alastre Shell handles structural concrete, block, slabs, driveways,
-                    and shell execution. Alastre Plastering handles framing, drywall,
+                    and shell execution. 
+                    
+                    Alastre Plastering handles framing, drywall,
                     finish, and stucco.
                   </p>
                 </div>
