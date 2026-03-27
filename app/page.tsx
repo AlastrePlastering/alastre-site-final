@@ -1061,6 +1061,7 @@ export default function Page() {
         <div className="absolute inset-0">
           <img
             src="/images/backgroundalastre.jpg"
+          
             alt="Construction background"
             className="h-full w-full scale-105 object-cover opacity-35"
           />
