@@ -908,7 +908,7 @@ export default function Page() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="fixed bottom-[19rem] right-4 z-[90] group md:right-5"
+            className="fixed bottom-[24rem] right-4 z-[90] group md:right-5"
           >
             <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[1.7rem] border border-cyan-300/30 bg-zinc-950/95 text-white shadow-[0_20px_50px_rgba(6,182,212,0.30)] backdrop-blur-xl transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(6,182,212,0.38)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(103,232,249,0.24),transparent_42%),radial-gradient(circle_at_75%_75%,rgba(168,85,247,0.16),transparent_38%)]" />
