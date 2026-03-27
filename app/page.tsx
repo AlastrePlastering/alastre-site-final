@@ -1060,7 +1060,7 @@ export default function Page() {
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
         <div className="absolute inset-0">
           <img
-            src="https://www.dropbox.com/scl/fi/221rxdeoey6lhg18s5q80/Octubre-14.JPG?rlkey=z2s3q2jrqp90i89y1r4o9fuea&st=u89e86dt&dl=0"
+            src="/images/alastrebackground.JPG"
             alt="Construction background"
             className="h-full w-full scale-105 object-cover opacity-35"
           />
