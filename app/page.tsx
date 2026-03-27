@@ -44,14 +44,6 @@ function ArrowRightIcon({ className }: { className?: string }) {
     </IconBase>
   );
 }
-function ArrowRightIcon({ className }: { className?: string }) {
-  return (
-    <IconBase className={className}>
-      <path d="M5 12h14" />
-      <path d="m13 5 7 7-7 7" />
-    </IconBase>
-  );
-}
 
 function ChevronRightIcon({ className }: { className?: string }) {
   return (
