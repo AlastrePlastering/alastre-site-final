@@ -452,7 +452,7 @@ function BeforeAfterSlider() {
           max="85"
           value={position}
           onChange={(e) => setPosition(Number(e.target.value))}
-          className="absolute inset-x-6 bottom-24 z-20 h-2 cursor-pointer appearance-none rounded-full bg-white/45 accent-cyan-500"
+          className="absolute inset-x-6 bottom-40 z-20 h-2 cursor-pointer appearance-none rounded-full bg-white/45 accent-cyan-500"
           aria-label="Compare shell and finished work"
         />
       </div>
