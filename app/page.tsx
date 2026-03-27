@@ -40,6 +40,14 @@ function ArrowRightIcon({ className }: { className?: string }) {
   return (
     <IconBase className={className}>
       <path d="M5 12h14" />
+      <path d="m12 5 7 7-7 7" />
+    </IconBase>
+  );
+}
+function ArrowRightIcon({ className }: { className?: string }) {
+  return (
+    <IconBase className={className}>
+      <path d="M5 12h14" />
       <path d="m13 5 7 7-7 7" />
     </IconBase>
   );
@@ -199,6 +207,17 @@ function MapPinIcon({ className }: { className?: string }) {
     <IconBase className={className}>
       <path d="M12 21s6-5.3 6-11a6 6 0 1 0-12 0c0 5.7 6 11 6 11Z" />
       <circle cx="12" cy="10" r="2.5" />
+    </IconBase>
+  );
+}
+
+
+function SparkIcon({ className }: { className?: string }) {
+  return (
+    <IconBase className={className}>
+      <path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3Z" />
+      <path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9L19 15Z" />
+      <path d="M5 14l.9 2.1L8 17l-2.1.9L5 20l-.9-2.1L2 17l2.1-.9L5 14Z" />
     </IconBase>
   );
 }
@@ -826,17 +845,16 @@ export default function Page() {
   const [liveMode, setLiveMode] = useState("queue");
   const [motionMode, setMotionMode] = useState("left");
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isAiOpen, setIsAiOpen] = useState(false);
+  const [aiMessage, setAiMessage] = useState("");
+  const [aiReply, setAiReply] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
 
   const activeService = useMemo(
     () => serviceTabs.find((tab) => tab.key === activeTab) ?? serviceTabs[0],
     [activeTab]
   );
   const ActiveServiceIcon = activeService.icon;
-
-  useEffect(() => {
-    const id = window.setInterval(() => {}, 3500);
-    return () => window.clearInterval(id);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -854,6 +872,35 @@ export default function Page() {
       top: 0,
       behavior: "smooth",
     });
+  };
+
+  async function handleAiSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!aiMessage.trim()) return;
+
+    try {
+      setAiLoading(true);
+      setAiReply("");
+
+      const res = await fetch("/api/assistant", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: aiMessage,
+        }),
+      });
+
+      const data = await res.json();
+      setAiReply(data.reply || "No response received.");
+    } catch (error) {
+      console.error("AI request failed:", error);
+      setAiReply("Something went wrong. Please try again.");
+    } finally {
+      setAiLoading(false);
+    }
   };
 
   return (
@@ -882,6 +929,57 @@ export default function Page() {
               </span>
             </div>
           </motion.button>
+        ) : null}
+      </AnimatePresence>
+
+      <button
+        type="button"
+        onClick={() => setIsAiOpen((prev) => !prev)}
+        className="fixed bottom-5 left-5 z-[90] flex items-center gap-2 rounded-2xl border border-cyan-400/30 bg-zinc-950/90 px-4 py-3 text-sm font-semibold text-white shadow-[0_20px_60px_rgba(34,211,238,0.25)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-cyan-300/50"
+      >
+        <SparkIcon className="h-5 w-5" />
+        Ask Alastre
+      </button>
+
+      <AnimatePresence>
+        {isAiOpen ? (
+          <motion.div
+            initial={{ opacity: 0, y: 16, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.96 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-24 left-5 z-[95] w-[min(92vw,420px)] overflow-hidden rounded-[24px] border border-white/10 bg-zinc-950/95 shadow-[0_25px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+          >
+            <div className="border-b border-white/10 px-4 py-3">
+              <div className="text-sm font-semibold text-white">Ask Alastre AI</div>
+              <div className="text-xs text-zinc-400">
+                Construction help only. No pricing.
+              </div>
+            </div>
+
+            <div className="space-y-3 p-4">
+              <form onSubmit={handleAiSubmit} className="space-y-3">
+                <textarea
+                  value={aiMessage}
+                  onChange={(e) => setAiMessage(e.target.value)}
+                  placeholder="Ask about block, concrete, drywall, stucco, framing..."
+                  className="min-h-[110px] w-full resize-none rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-zinc-500"
+                />
+
+                <button
+                  type="submit"
+                  disabled={aiLoading}
+                  className="inline-flex items-center justify-center rounded-2xl bg-cyan-400 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {aiLoading ? "Thinking..." : "Send"}
+                </button>
+              </form>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-zinc-200">
+                {aiReply ? aiReply : "Your reply will appear here."}
+              </div>
+            </div>
+          </motion.div>
         ) : null}
       </AnimatePresence>
 
