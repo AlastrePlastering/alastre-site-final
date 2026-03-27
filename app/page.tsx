@@ -1060,10 +1060,10 @@ export default function Page() {
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
         <div className="absolute inset-0">
           <img
-            src=src="/images/backgroundalastre.jpg"
-            alt="Construction background"
-            className="h-full w-full scale-105 object-cover opacity-35"
-          />
+    src="/images/backgroundalastre.jpg"
+    alt="Construction background"
+    className="h-full w-full object-cover"
+  />
           <div className="absolute inset-0 bg-gradient-to-br from-black via-black/75 to-zinc-900/70" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(103,232,249,0.18),transparent_24%),radial-gradient(circle_at_82%_78%,rgba(103,232,249,0.14),transparent_24%),radial-gradient(circle_at_60%_30%,rgba(168,85,247,0.10),transparent_22%)]" />
         </div>
