@@ -452,7 +452,7 @@ function BeforeAfterSlider() {
           max="85"
           value={position}
           onChange={(e) => setPosition(Number(e.target.value))}
-          className="absolute inset-x-6 bottom-40 z-20 h-2 cursor-pointer appearance-none rounded-full bg-white/45 accent-cyan-500"
+          className="absolute inset-x-6 bottom-24 z-20 h-2 cursor-pointer appearance-none rounded-full bg-white/45 accent-cyan-500"
           aria-label="Compare shell and finished work"
         />
       </div>
@@ -908,7 +908,7 @@ export default function Page() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="fixed bottom-[19rem] right-4 z-[90] group md:right-5"
+            className="fixed bottom-[13.5rem] right-4 z-[90] group md:right-5"
           >
             <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[1.7rem] border border-cyan-300/30 bg-zinc-950/95 text-white shadow-[0_20px_50px_rgba(6,182,212,0.30)] backdrop-blur-xl transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(6,182,212,0.38)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(103,232,249,0.24),transparent_42%),radial-gradient(circle_at_75%_75%,rgba(168,85,247,0.16),transparent_38%)]" />
@@ -1060,7 +1060,7 @@ export default function Page() {
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
         <div className="absolute inset-0">
           <img
-            src="/images/backgroundalastre.jpg"
+            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=80"
             alt="Construction background"
             className="h-full w-full scale-105 object-cover opacity-35"
           />
