@@ -52,18 +52,6 @@ export const metadata = {
     },
   },
 };
-import "./globals.css";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Alastre Plastering & Shell",
-  description: "Alastre Shell & Alastre Plastering - South Florida Construction",
-  icons: {
-    icon: "/favicon.ico?v=3",
-    shortcut: "/favicon.ico?v=3",
-    apple: "/favicon.ico?v=3",
-  },
-};
 
 export default function RootLayout({
   children,
