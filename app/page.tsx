@@ -1155,12 +1155,15 @@ export default function Page() {
                     Division Focus
                   </p>
                   <p className="mt-1 text-xs leading-6 text-zinc-300">
+  <p className="mt-1 text-xs leading-6 text-zinc-300">
   <span className="block">
     Alastre Shell handles structural concrete, block, slabs, driveways,
     and shell execution.
   </span>
 
-  <span className="block mt-2">
+  <span className="block my-2 h-px w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-60" />
+
+  <span className="block">
     Alastre Plastering handles framing, drywall,
     finish, and stucco.
   </span>
