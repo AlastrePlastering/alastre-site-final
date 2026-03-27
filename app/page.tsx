@@ -36,6 +36,7 @@ function UpBeamIcon({ className }: { className?: string }) {
   );
 }
 
+
 function ArrowRightIcon({ className }: { className?: string }) {
   return (
     <IconBase className={className}>
