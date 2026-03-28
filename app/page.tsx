@@ -895,7 +895,26 @@ export default function Page() {
       setAiLoading(false);
     }
   };
+async function handleContactSubmit(e: React.FormEvent) {
+  e.preventDefault();
 
+  const res = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: contactName,
+      email: contactEmail,
+      phone: contactPhone,
+      message: contactMessage,
+    }),
+  });
+
+  const data = await res.json();
+
+  console.log("Contact response:", data);
+}
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
       <AnimatePresence>
