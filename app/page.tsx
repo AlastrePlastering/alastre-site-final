@@ -1872,17 +1872,20 @@ export default function Page() {
   </button>
 
   {contactStatus && (
-    <p
-      className={`text-sm ${
-        contactStatus.includes("success")
-          ? "text-green-600"
-          : "text-red-500"
-      }`}
-    >
-      {contactStatus}
-    </p>
-  )}
+  <p
+    className={`text-sm ${
+      contactStatus.includes("success")
+        ? "text-green-600"
+        : "text-red-500"
+    }`}
+  >
+    {contactStatus}
+  </p>
+)}
 </form>
+          </motion.div>
+        </div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
