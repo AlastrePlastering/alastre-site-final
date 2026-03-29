@@ -1415,14 +1415,15 @@ We build the structural backbone of your project — concrete, block, rebar, sla
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-zinc-300">
-                    Company 02
+                  Precision Interior and Exterior Finishes
                   </p>
                   <h2 className="text-2xl font-bold">Alastre Plastering</h2>
                 </div>
               </div>
               <p className="mt-5 text-zinc-300">
-                Interior framing, drywall, finish, and exterior stucco with
-                production, clean detail, and strong presentation.
+              Most people build to get it done. We build to get it right.
+Every project is approached with the same mindset — strong structure, clean execution, and zero tolerance for sloppy work.
+From concrete and block to framing, drywall, and stucco, everything is done with precision, discipline, and a standard that doesn’t bend.
               </p>
             </motion.div>
           </motion.div>
