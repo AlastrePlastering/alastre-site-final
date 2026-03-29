@@ -344,6 +344,7 @@ function SectionTitle({
   title: string;
   description: string;
   light?: boolean;
+  titleSize?: string;
 }) {
   return (
     <motion.div
@@ -361,7 +362,7 @@ function SectionTitle({
         {eyebrow}
       </p>
       <h2
-        className={`mt-3 text-4xl font-bold tracking-tight md:text-5xl ${
+        className={`mt-3 ${titleSize} font-bold tracking-tight ${
           light ? "text-white" : "text-zinc-950"
         }`}
       >
@@ -1454,6 +1455,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
     title="We keep things simple — clear work, done right."
     description="Good construction starts with knowing exactly what you’re doing..."
     light
+    titleSize="text-3xl md:text-4xl"
   />
 </div>
 
