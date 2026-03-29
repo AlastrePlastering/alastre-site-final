@@ -1433,19 +1433,20 @@ From concrete and block to framing, drywall, and stucco, everything is done with
       <BuildYourVision />
 
       <section
-        id="services"
-        className="relative overflow-hidden py-24"
-      >
-        <BackgroundTexture
-          src="/images/alastreshell.jpg"
-          alt="Drywall Background"
-          opacityClass="opacity-[0.75]"
-        />
-        {/* overlay suave */}
+  id="services"
+  className="relative overflow-hidden py-24"
+>
+  <div
+    className="absolute inset-0 bg-cover bg-center"
+    style={{ backgroundImage: "url('/images/alastreshell.jpg')" }}
+  />
+
   <div className="absolute inset-0 bg-white/30" />
+
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.06),transparent_24%)]" />
 
   <div className="relative mx-auto max-w-7xl px-6">
+ 
 
           <SectionTitle
             eyebrow="Services"
