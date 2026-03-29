@@ -1437,7 +1437,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         className="relative overflow-hidden bg-[linear-gradient(to_bottom,rgba(255,255,255,1),rgba(244,251,255,1),rgba(255,255,255,1))] py-24"
       >
         <BackgroundTexture
-          src="/images/alastreshell.jpg')"
+          src="/images/alastreshell.jpg"
           alt="Drywall Background"
           opacityClass="opacity-[0.75]"
         />
