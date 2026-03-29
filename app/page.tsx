@@ -1438,7 +1438,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
 >
   <div
     className="absolute inset-0 bg-cover bg-center"
-    style={{ backgroundImage: "url('/images/alastreshell.jpg')" }}
+    style={{ backgroundImage: "url('/images/alastreshell.JPG')" }}
   />
 
   <div className="absolute inset-0 bg-white/30" />
