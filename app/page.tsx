@@ -841,7 +841,13 @@ export default function Page() {
   const [isAiOpen, setIsAiOpen] = useState(false);
   const [aiMessage, setAiMessage] = useState("");
   const [aiReply, setAiReply] = useState("");
-  const [aiLoading, setAiLoading] = useState(false);
+  const [contactName, setContactName] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactMessage, setContactMessage] = useState("");
+  const [contactSending, setContactSending] = useState(false);
+  const [contactStatus, setContactStatus] = useState("");
+  
 
   const activeService = useMemo(
     () => serviceTabs.find((tab) => tab.key === activeTab) ?? serviceTabs[0],
@@ -895,25 +901,49 @@ export default function Page() {
       setAiLoading(false);
     }
   };
-async function handleContactSubmit(e: React.FormEvent) {
+async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
   e.preventDefault();
 
-  const res = await fetch("/api/contact", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      name: contactName,
-      email: contactEmail,
-      phone: contactPhone,
-      message: contactMessage,
-    }),
-  });
+  if (!contactName || !contactEmail || !contactMessage) {
+    setContactStatus("Please fill all required fields.");
+    return;
+  }
 
-  const data = await res.json();
+  try {
+    setContactSending(true);
+    setContactStatus("");
 
-  console.log("Contact response:", data);
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: contactName,
+        email: contactEmail,
+        phone: contactPhone,
+        message: contactMessage,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      setContactStatus("Message sent successfully.");
+      setContactName("");
+      setContactEmail("");
+      setContactPhone("");
+      setContactMessage("");
+    } else {
+      setContactStatus("Error sending message.");
+    }
+
+  } catch (error) {
+    console.error(error);
+    setContactStatus("Something went wrong.");
+  } finally {
+    setContactSending(false);
+  }
 }
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
@@ -1797,33 +1827,61 @@ async function handleContactSubmit(e: React.FormEvent) {
                 opacityClass="opacity-[0.015]"
               />
               <div className="relative grid gap-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 text-zinc-900 outline-none transition focus:border-cyan-400 focus:bg-white"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 text-zinc-900 outline-none transition focus:border-cyan-400 focus:bg-white"
-                />
-                <input
-                  type="text"
-                  placeholder="Phone"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 text-zinc-900 outline-none transition focus:border-cyan-400 focus:bg-white"
-                />
-                <textarea
-                  rows={5}
-                  placeholder="Tell us about your project"
-                  className="rounded-2xl border border-zinc-200 bg-zinc-50 px-4 py-4 text-zinc-900 outline-none transition focus:border-cyan-400 focus:bg-white"
-                />
-                <motion.div whileHover={{ y: -4, scale: 1.01 }} whileTap={{ scale: 0.99 }}>
-                  <button className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-6 py-4 font-semibold text-white shadow-lg shadow-cyan-200/20">
-                    Send Request <ArrowRightIcon className="h-4 w-4" />
-                  </button>
-                </motion.div>
-              </div>
-            </motion.div>
+                <form onSubmit={handleContactSubmit} className="relative grid gap-4">
+
+  <input
+    type="text"
+    placeholder="Name"
+    value={contactName}
+    onChange={(e) => setContactName(e.target.value)}
+    className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none focus:border-cyan-400"
+    required
+  />
+
+  <input
+    type="email"
+    placeholder="Email"
+    value={contactEmail}
+    onChange={(e) => setContactEmail(e.target.value)}
+    className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none focus:border-cyan-400"
+    required
+  />
+
+  <input
+    type="text"
+    placeholder="Phone"
+    value={contactPhone}
+    onChange={(e) => setContactPhone(e.target.value)}
+    className="w-full rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none focus:border-cyan-400"
+  />
+
+  <textarea
+    placeholder="Tell us about your project..."
+    value={contactMessage}
+    onChange={(e) => setContactMessage(e.target.value)}
+    className="min-h-[140px] w-full resize-none rounded-2xl border border-zinc-200 bg-white px-4 py-3 text-sm outline-none focus:border-cyan-400"
+    required
+  />
+
+  <button
+    type="submit"
+    disabled={contactSending}
+    className="rounded-2xl bg-zinc-950 px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800 disabled:opacity-60"
+  >
+    {contactSending ? "Sending..." : "Send Message"}
+  </button>
+
+  {contactStatus && (
+    <p className={`text-sm ${
+      contactStatus.includes("success")
+        ? "text-green-600"
+        : "text-red-500"
+    }`}>
+      {contactStatus}
+    </p>
+  )}
+
+</form>
           </div>
 
           <motion.div
