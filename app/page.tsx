@@ -339,6 +339,7 @@ function SectionTitle({
   title,
   description,
   light = false,
+  titleSize = "text-4xl md:text-5xl",
 }: {
   eyebrow: string;
   title: string;
@@ -361,6 +362,7 @@ function SectionTitle({
       >
         {eyebrow}
       </p>
+
       <h2
         className={`mt-3 ${titleSize} font-bold tracking-tight ${
           light ? "text-white" : "text-zinc-950"
@@ -368,6 +370,7 @@ function SectionTitle({
       >
         {title}
       </h2>
+
       <p
         className={`mt-4 text-lg leading-8 ${
           light ? "text-zinc-300" : "text-zinc-600"
