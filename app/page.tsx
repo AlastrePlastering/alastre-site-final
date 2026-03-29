@@ -944,7 +944,7 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
   } finally {
     setContactSending(false);
   }
-}
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
       <AnimatePresence>
@@ -1826,7 +1826,7 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
                 alt="Stucco texture"
                 opacityClass="opacity-[0.015]"
               />
-              <div className="relative grid gap-4">
+              
                 <form onSubmit={handleContactSubmit} className="relative grid gap-4">
 
   <input
@@ -1872,17 +1872,31 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
   </button>
 
   {contactStatus && (
+<<<<<<< HEAD
     <p className={`text-sm ${
       contactStatus.includes("success")
         ? "text-green-600"
         : "text-red-500"
     }`}>
+=======
+    <p
+      className={`text-sm ${
+        contactStatus.includes("success")
+          ? "text-green-600"
+          : "text-red-500"
+      }`}
+    >
+>>>>>>> bb8dd5f99321f95c3e20032fdb74ba88b45f34ae
       {contactStatus}
     </p>
   )}
 
+<<<<<<< HEAD
 </form>
-          </div>
+        
+=======
+</form>         
+>>>>>>> bb8dd5f99321f95c3e20032fdb74ba88b45f34ae
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

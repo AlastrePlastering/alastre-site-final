@@ -1,70 +1,70 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const TO_EMAILS = [
-  "info@alastreplastering.com",
-  "contact@alastreshell.com",
-];
-
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const { name, email, phone, message } = await req.json();
 
-    const name = body?.name || "Not provided";
-    const email = body?.email || "Not provided";
-    const phone = body?.phone || "Not provided";
-    const message = body?.message || "";
-
-    if (!message || message.trim().length < 5) {
+    if (!name || !email || !message) {
       return NextResponse.json(
-        { message: "Please provide more details about the project." },
+        { success: false, error: "Missing required fields." },
         { status: 400 }
       );
     }
 
-    if (!process.env.RESEND_API_KEY) {
+    const apiKey = process.env.RESEND_API_KEY || process.env.Alastre_Ai;
+
+    if (!apiKey) {
       return NextResponse.json(
-        { message: "Missing RESEND_API_KEY." },
+        { success: false, error: "Missing Resend API key." },
         { status: 500 }
       );
     }
 
-    const html = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <h2>New Contact Request – Alastre</h2>
+    const resend = new Resend(apiKey);
 
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-
-        <hr />
-
-        <h3>Project Details</h3>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
-      </div>
-    `;
-
-    await resend.emails.send({
-      from:
-        process.env.NOTIFICATION_FROM ||
-        "Alastre AI <info@alastreplastering.com>",
-      to: TO_EMAILS,
-      subject: "New Contact Request from Website",
-      html,
+    const { data, error } = await resend.emails.send({
+      from: "Alastre Website <onboarding@resend.dev>",
+      to: ["info@alastreplastering.com"],
+      replyTo: email,
+      subject: `New Lead - ${name}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
+          <h2>New Website Lead</h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
+          <p><strong>Message:</strong></p>
+          <div style="padding: 12px; background: #f4f4f4; border-radius: 8px; white-space: pre-wrap;">
+            ${escapeHtml(message)}
+          </div>
+        </div>
+      `,
     });
 
-    return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error("CONTACT FORM ERROR:", error);
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { success: false, error: "Failed to send email." },
+        { status: 500 }
+      );
+    }
 
+    return NextResponse.json({ success: true, data });
+  } catch (error) {
+    console.error("Contact route error:", error);
     return NextResponse.json(
-      {
-        message:
-          error?.message || "Something went wrong sending the request.",
-      },
+      { success: false, error: "Failed to send email." },
       { status: 500 }
     );
   }
+}
+
+function escapeHtml(value: string) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
