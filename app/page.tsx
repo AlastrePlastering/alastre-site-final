@@ -1439,7 +1439,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         <BackgroundTexture
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=80"
           alt="Drywall background"
-          opacityClass="opacity-[0.025]"
+          opacityClass="opacity-[0.75]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.06),transparent_24%)]" />
 
