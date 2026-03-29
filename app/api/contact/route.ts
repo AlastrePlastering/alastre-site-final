@@ -28,7 +28,7 @@ export async function POST(req: Request) {
     const safePhone = escapeHtml(phone || "N/A");
     const safeMessage = escapeHtml(message);
 
-    const logoUrl = "https://dl.dropboxusercontent.com/s/Logos/Alastre%20Plastering.png";
+    const logoUrl = "https://www.alastreplastering.com/logos/alastre-plastering.png";
 
     // EMAIL INTERNO (PARA TI)
     const internalEmail = await resend.emails.send({
