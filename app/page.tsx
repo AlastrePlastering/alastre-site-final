@@ -419,7 +419,7 @@ function BeforeAfterSlider() {
     <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
       <div className="relative h-[420px] w-full">
         <img
-          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80"
+          src="/images/alastreshell2.jpg"
           alt="Shell construction"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -428,8 +428,8 @@ function BeforeAfterSlider() {
           style={{ width: `${position}%` }}
         >
           <img
-            src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?auto=format&fit=crop&w=1600&q=80"
-            alt="Drywall interior finish"
+            src="/images/stuccofinish.jpg"
+            alt="Stucco finish"
             className="h-full w-full max-w-none object-cover"
             style={{ width: "100vw" }}
           />
