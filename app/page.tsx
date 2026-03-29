@@ -847,6 +847,7 @@ export default function Page() {
   const [contactMessage, setContactMessage] = useState("");
   const [contactSending, setContactSending] = useState(false);
   const [contactStatus, setContactStatus] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
   
 
   const activeService = useMemo(
@@ -901,49 +902,48 @@ export default function Page() {
       setAiLoading(false);
     }
   };
-async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
-  e.preventDefault();
-
-  if (!contactName || !contactEmail || !contactMessage) {
-    setContactStatus("Please fill all required fields.");
-    return;
-  }
-
-  try {
-    setContactSending(true);
-    setContactStatus("");
-
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: contactName,
-        email: contactEmail,
-        phone: contactPhone,
-        message: contactMessage,
-      }),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      setContactStatus("Message sent successfully.");
-      setContactName("");
-      setContactEmail("");
-      setContactPhone("");
-      setContactMessage("");
-    } else {
-      setContactStatus("Error sending message.");
+  async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  
+    if (!contactName || !contactEmail || !contactMessage) {
+      setContactStatus("Please fill all required fields.");
+      return;
     }
-
-  } catch (error) {
-    console.error(error);
-    setContactStatus("Something went wrong.");
-  } finally {
-    setContactSending(false);
-  }
+  
+    try {
+      setContactSending(true);
+      setContactStatus("");
+  
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: contactName,
+          email: contactEmail,
+          phone: contactPhone,
+          message: contactMessage,
+        }),
+      });
+  
+      const data = await res.json();
+  
+      if (data.success) {
+        setContactStatus("Message sent successfully.");
+        setContactName("");
+        setContactEmail("");
+        setContactPhone("");
+        setContactMessage("");
+      } else {
+        setContactStatus("Error sending message.");
+      }
+    } catch (error) {
+      console.error(error);
+      setContactStatus("Something went wrong.");
+    } finally {
+      setContactSending(false);
+    }
   }
 
     <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
@@ -1882,13 +1882,7 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
       {contactStatus}
     </p>
   )}
-
-
 </form>
-        
-       
-
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
