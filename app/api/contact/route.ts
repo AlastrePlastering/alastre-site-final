@@ -23,34 +23,97 @@ export async function POST(req: Request) {
 
     const resend = new Resend(apiKey);
 
-    const { data, error } = await resend.emails.send({
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone || "N/A");
+    const safeMessage = escapeHtml(message);
+
+    const internalEmail = await resend.emails.send({
       from: "Alastre Lead Website <info@alastreplastering.com>",
       to: ["info@alastreplastering.com"],
       replyTo: email,
       subject: `New Lead - ${name}`,
       html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
-          <h2>New Website Lead</h2>
-          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
-          <p><strong>Message:</strong></p>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111; padding: 20px;">
+          <h2 style="margin: 0 0 16px;">New Website Lead</h2>
+
+          <p style="margin: 0 0 8px;"><strong>Name:</strong> ${safeName}</p>
+          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${safeEmail}</p>
+          <p style="margin: 0 0 8px;"><strong>Phone:</strong> ${safePhone}</p>
+
+          <p style="margin: 18px 0 8px;"><strong>Message:</strong></p>
           <div style="padding: 12px; background: #f4f4f4; border-radius: 8px; white-space: pre-wrap;">
-            ${escapeHtml(message)}
+            ${safeMessage}
           </div>
+
+          <hr style="margin: 24px 0; border: none; border-top: 1px solid #ddd;" />
+
+          <p style="margin: 0; font-size: 13px; color: #666;">
+            Sent from AlastrePlastering.com contact form
+          </p>
         </div>
       `,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
+    if (internalEmail.error) {
+      console.error("Resend internal email error:", internalEmail.error);
       return NextResponse.json(
         { success: false, error: "Failed to send email." },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ success: true, data });
+    const autoReply = await resend.emails.send({
+      from: "Alastre Construction <info@alastreplastering.com>",
+      to: [email],
+      subject: "We received your request - Alastre Construction",
+      html: `
+        <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #111; padding: 20px;">
+          <h2 style="margin: 0 0 16px;">Thank you for reaching out</h2>
+
+          <p>Hi ${safeName},</p>
+
+          <p>
+            We received your message and our team will review it shortly.
+          </p>
+
+          <p>
+            To help us move faster with your estimate, feel free to reply to this email and attach any project files you may have, such as:
+          </p>
+
+          <ul style="padding-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+            <li>Plans or blueprints</li>
+            <li>Project photos</li>
+            <li>Measurements</li>
+            <li>Project address</li>
+            <li>Scope details</li>
+          </ul>
+
+          <p>
+            Sending those files in advance helps us review the project sooner and prepare a more accurate estimate.
+          </p>
+
+          <p>
+            We appreciate the opportunity and look forward to helping with your project.
+          </p>
+
+          <p style="margin-top: 24px;">
+            Alastre Construction<br />
+            Framing • Drywall • Finish • Stucco • Shell Construction
+          </p>
+        </div>
+      `,
+    });
+
+    if (autoReply.error) {
+      console.error("Resend auto-reply error:", autoReply.error);
+    }
+
+    return NextResponse.json({
+      success: true,
+      data: internalEmail.data,
+      autoReplySent: !autoReply.error,
+    });
   } catch (error) {
     console.error("Contact route error:", error);
     return NextResponse.json(
