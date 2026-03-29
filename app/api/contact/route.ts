@@ -28,6 +28,9 @@ export async function POST(req: Request) {
     const safePhone = escapeHtml(phone || "N/A");
     const safeMessage = escapeHtml(message);
 
+    const logoUrl = "https://dl.dropboxusercontent.com/s/Logos/Alastre%20Plastering.png";
+
+    // EMAIL INTERNO (PARA TI)
     const internalEmail = await resend.emails.send({
       from: "Alastre Lead Website <info@alastreplastering.com>",
       to: ["info@alastreplastering.com"],
@@ -35,21 +38,27 @@ export async function POST(req: Request) {
       subject: `New Lead - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111; padding: 20px;">
-          <h2 style="margin: 0 0 16px;">New Website Lead</h2>
 
-          <p style="margin: 0 0 8px;"><strong>Name:</strong> ${safeName}</p>
-          <p style="margin: 0 0 8px;"><strong>Email:</strong> ${safeEmail}</p>
-          <p style="margin: 0 0 8px;"><strong>Phone:</strong> ${safePhone}</p>
+          <div style="text-align:center; margin-bottom:20px;">
+            <img src="${logoUrl}" style="max-width:160px;" />
+          </div>
 
-          <p style="margin: 18px 0 8px;"><strong>Message:</strong></p>
-          <div style="padding: 12px; background: #f4f4f4; border-radius: 8px; white-space: pre-wrap;">
+          <h2 style="margin-bottom:16px;">New Website Lead</h2>
+
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Phone:</strong> ${safePhone}</p>
+
+          <p style="margin-top:18px;"><strong>Message:</strong></p>
+
+          <div style="padding: 12px; background: #f4f4f4; border-radius: 8px;">
             ${safeMessage}
           </div>
 
-          <hr style="margin: 24px 0; border: none; border-top: 1px solid #ddd;" />
+          <hr style="margin:24px 0;" />
 
-          <p style="margin: 0; font-size: 13px; color: #666;">
-            Sent from AlastrePlastering.com contact form
+          <p style="font-size:12px; color:#777;">
+            Sent from AlastrePlastering.com
           </p>
         </div>
       `,
@@ -63,13 +72,20 @@ export async function POST(req: Request) {
       );
     }
 
+    // AUTO REPLY (CLIENTE)
     const autoReply = await resend.emails.send({
       from: "Alastre Construction <info@alastreplastering.com>",
       to: [email],
       subject: "We received your request - Alastre Construction",
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #111; padding: 20px;">
-          <h2 style="margin: 0 0 16px;">Thank you for reaching out</h2>
+
+          <!-- LOGO ARRIBA -->
+          <div style="text-align:center; margin-bottom:20px;">
+            <img src="${logoUrl}" style="max-width:180px;" />
+          </div>
+
+          <h2>Thank you for reaching out</h2>
 
           <p>Hi ${safeName},</p>
 
@@ -78,10 +94,10 @@ export async function POST(req: Request) {
           </p>
 
           <p>
-            To help us move faster with your estimate, feel free to reply to this email and attach any project files you may have, such as:
+            To help us move faster with your estimate, feel free to reply to this email and attach any project files such as:
           </p>
 
-          <ul style="padding-left: 20px; margin-top: 10px; margin-bottom: 16px;">
+          <ul>
             <li>Plans or blueprints</li>
             <li>Project photos</li>
             <li>Measurements</li>
@@ -90,23 +106,31 @@ export async function POST(req: Request) {
           </ul>
 
           <p>
-            Sending those files in advance helps us review the project sooner and prepare a more accurate estimate.
+            Sending those files in advance helps us provide a faster and more accurate estimate.
           </p>
 
           <p>
-            We appreciate the opportunity and look forward to helping with your project.
+            We appreciate the opportunity and look forward to working with you.
           </p>
 
-          <p style="margin-top: 24px;">
-            Alastre Construction<br />
-            Framing • Drywall • Finish • Stucco • Shell Construction
-          </p>
-          <p>
-            www.alastreplastering.com
-            info@alastreplastering.com
-            contact@alastreshell.com
-            PH: 786-65-73
-          </p>
+          <!-- FIRMA -->
+          <div style="margin-top:30px; text-align:center;">
+
+            <img src="${logoUrl}" style="max-width:140px; margin-bottom:10px;" />
+
+            <p>
+              <strong>Alastre Construction</strong><br/>
+              Framing • Drywall • Finish • Stucco • Shell Construction
+            </p>
+
+            <p>
+              www.alastreplastering.com<br/>
+              info@alastreplastering.com<br/>
+              contact@alastreshell.com<br/>
+              PH: 786-724-6573
+            </p>
+          </div>
+
         </div>
       `,
     });
