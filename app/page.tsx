@@ -944,8 +944,8 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
   } finally {
     setContactSending(false);
   }
+  }
 
-  return (
     <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
       <AnimatePresence>
         {showBackToTop ? (
