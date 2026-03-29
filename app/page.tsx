@@ -1443,14 +1443,14 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         />
         {/* overlay suave */}
   <div className="absolute inset-0 bg-white/30" />
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.06),transparent_24%)]" />
 
-{/* efectos */}
-<div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(103,232,249,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.06),transparent_24%)]" />
+  <div className="relative mx-auto max-w-7xl px-6">
+
           <SectionTitle
             eyebrow="Services"
             title="We keep things simple — clear work, done right."
-            description="Good construction starts with knowing exactly what you’re doing.
-            That’s why every phase is clear, every step is intentional, and everything is built right — from structure to finish."
+            description="Good construction starts with knowing exactly what you’re doing. That’s why every phase is clear, every step is intentional, and everything is built right — from structure to finish."
           />
 
           <div className="mt-16 grid gap-8 lg:grid-cols-[0.42fr_0.58fr]">
