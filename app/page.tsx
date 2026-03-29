@@ -1446,8 +1446,9 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         <div className="relative mx-auto max-w-7xl px-6">
           <SectionTitle
             eyebrow="Services"
-            title="Clear scopes. Premium presentation."
-            description="The page separates both companies the right way so clients instantly understand what Alastre Plastering does and what Alastre Shell does."
+            title="We keep things simple — clear work, done right."
+            description="Good construction starts with knowing exactly what you’re doing.
+            That’s why every phase is clear, every step is intentional, and everything is built right — from structure to finish."
           />
 
           <div className="mt-16 grid gap-8 lg:grid-cols-[0.42fr_0.58fr]">
