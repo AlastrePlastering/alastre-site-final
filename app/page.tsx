@@ -1448,7 +1448,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
   <div className="relative mx-auto max-w-7xl px-6">
  
 
-  <div className="bg-black/40 backdrop-blur rounded-2xl p-6">
+  <div className="bg-gradient-to-br from-black/70 via-black/50 to-black/70 backdrop-blur-xl rounded-[2rem] p-8 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
   <SectionTitle
     eyebrow="Services"
     title="We keep things simple — clear work, done right."
