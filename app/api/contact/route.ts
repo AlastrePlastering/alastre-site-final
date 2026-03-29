@@ -101,6 +101,12 @@ export async function POST(req: Request) {
             Alastre Construction<br />
             Framing • Drywall • Finish • Stucco • Shell Construction
           </p>
+          <p>
+            www.alastreplastering.com
+            info@alastreplastering.com
+            contact@alastreshell.com
+            PH: 786-65-73
+          </p>
         </div>
       `,
     });
