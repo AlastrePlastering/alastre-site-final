@@ -1,70 +1,38 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const TO_EMAILS = [
-  "info@alastreplastering.com",
-  "contact@alastreshell.com",
-];
+import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const { name, email, phone, message } = await req.json();
 
-    const name = body?.name || "Not provided";
-    const email = body?.email || "Not provided";
-    const phone = body?.phone || "Not provided";
-    const message = body?.message || "";
+    const transporter = nodemailer.createTransport({
+      host: "smtpout.secureserver.net",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
 
-    if (!message || message.trim().length < 5) {
-      return NextResponse.json(
-        { message: "Please provide more details about the project." },
-        { status: 400 }
-      );
-    }
-
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json(
-        { message: "Missing RESEND_API_KEY." },
-        { status: 500 }
-      );
-    }
-
-    const html = `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <h2>New Contact Request – Alastre</h2>
-
+    await transporter.sendMail({
+      from: `"Alastre Website" <info@alastreplastering.com>`,
+      to: "info@alastreplastering.com",
+      replyTo: email,
+      subject: `New Lead - ${name}`,
+      html: `
+        <h2>New Lead</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-
-        <hr />
-
-        <h3>Project Details</h3>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
-      </div>
-    `;
-
-    await resend.emails.send({
-      from:
-        process.env.NOTIFICATION_FROM ||
-        "Alastre AI <info@alastreplastering.com>",
-      to: TO_EMAILS,
-      subject: "New Contact Request from Website",
-      html,
+        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error("CONTACT FORM ERROR:", error);
 
-    return NextResponse.json(
-      {
-        message:
-          error?.message || "Something went wrong sending the request.",
-      },
-      { status: 500 }
-    );
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ success: false });
   }
 }
