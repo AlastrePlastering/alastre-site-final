@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     const resend = new Resend(apiKey);
 
     const { data, error } = await resend.emails.send({
-      from: "Alastre Website <onboarding@resend.dev>",
+      from: "Alastre Lead Website <info@alastreplastering.com>",
       to: ["info@alastreplastering.com"],
       replyTo: email,
       subject: `New Lead - ${name}`,
