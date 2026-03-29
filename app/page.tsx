@@ -1394,14 +1394,14 @@ return (
                 </div>
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-zinc-300">
-                    Company 01
+                  Where real construction begins.
                   </p>
                   <h2 className="text-2xl font-bold">Alastre Shell</h2>
                 </div>
               </div>
               <p className="mt-5 text-zinc-300">
-                Shell construction homes, concrete driveways, sidewalks, block,
-                rebar, slabs, columns, and structural execution.
+              No shortcuts. No guesswork.
+We build the structural backbone of your project — concrete, block, rebar, slabs, and everything that holds the building together.
               </p>
             </motion.div>
 
