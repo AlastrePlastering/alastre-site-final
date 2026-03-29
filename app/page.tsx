@@ -1434,7 +1434,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
 
       <section
   id="services"
-  className="relative overflow-hidden py-24"
+  className="relative overflow-hidden py-24 min-h-[700px]"
 >
   <div
     className="absolute inset-0 bg-cover bg-center"
