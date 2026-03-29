@@ -1872,17 +1872,18 @@ async function handleContactSubmit(e: React.FormEvent<HTMLFormElement>) {
   </button>
 
   {contactStatus && (
-    <p className={`text-sm ${
-      contactStatus.includes("success")
-        ? "text-green-600"
-        : "text-red-500"
-    }`}>
+    <p
+      className={`text-sm ${
+        contactStatus.includes("success")
+          ? "text-green-600"
+          : "text-red-500"
+      }`}
+    >
       {contactStatus}
     </p>
   )}
 
-</form>
-          </div>
+</form>          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
