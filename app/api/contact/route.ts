@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function POST(req: Request) {
   try {
@@ -12,36 +12,45 @@ export async function POST(req: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: "smtpout.secureserver.net",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const apiKey = process.env.RESEND_API_KEY || process.env.Alastre_Ai;
 
-    await transporter.sendMail({
-      from: `"Alastre Website" <info@alastreplastering.com>`,
-      to: "info@alastreplastering.com",
+    if (!apiKey) {
+      return NextResponse.json(
+        { success: false, error: "Missing Resend API key." },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
+
+    const { data, error } = await resend.emails.send({
+      from: "Alastre Website <onboarding@resend.dev>",
+      to: ["info@alastreplastering.com"],
       replyTo: email,
       subject: `New Lead - ${name}`,
       html: `
-        <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111;">
           <h2>New Website Lead</h2>
-          <p><strong>Name:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
-          <p><strong>Phone:</strong> ${phone || "N/A"}</p>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
           <p><strong>Message:</strong></p>
-          <div style="padding: 12px; background: #f4f4f4; border-radius: 8px;">
-            ${message}
+          <div style="padding: 12px; background: #f4f4f4; border-radius: 8px; white-space: pre-wrap;">
+            ${escapeHtml(message)}
           </div>
         </div>
       `,
     });
 
-    return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { success: false, error: "Failed to send email." },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Contact route error:", error);
     return NextResponse.json(
@@ -49,4 +58,13 @@ export async function POST(req: Request) {
       { status: 500 }
     );
   }
+}
+
+function escapeHtml(value: string) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
