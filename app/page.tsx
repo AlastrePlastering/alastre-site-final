@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
+import VisitCounter from "@/components/VisitCounter";
 
 function IconBase({
   children,
@@ -1326,6 +1327,7 @@ return (
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
+            <VisitCounter />
             <div className="mb-6 inline-flex rounded-full border border-cyan-200/35 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.35em] text-zinc-200 backdrop-blur">
               South Florida Construction
             </div>
