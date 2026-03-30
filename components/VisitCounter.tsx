@@ -55,7 +55,7 @@ export default function VisitCounter() {
       <div className="relative max-w-7xl px-6 -ml-6 md:-ml-12">
         <div className="rounded-[2rem] border border-zinc-200/50 bg-white/60 backdrop-blur-xl p-10 pl-16 text-left shadow-[0_20px_75px_rgba(0,0,0,0.08)] overflow-hidden">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-600">
-            Site Activity
+               Site Activity
           </p>
 
           <div className="mt-4 text-5xl font-bold tracking-tight text-cyan-400 md:text-7xl drop-shadow-[0_0_12px_rgba(34,211,238,0.6)]">
@@ -63,7 +63,7 @@ export default function VisitCounter() {
           </div>
 
           <p className="mt-4 max-w-2xl text-left text-base leading-7 text-cyan-600 md:text-lg">
-          Real-time visitors exploring our work since the launch of our Website.
+               Real-time visitors exploring our work since the launch of our Website.
           </p>
         </div>
       </div>
