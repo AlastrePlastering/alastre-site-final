@@ -52,7 +52,7 @@ export default function VisitCounter() {
   return (
     <section className="relative overflow-hidden py-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.10),transparent_35%)]" />
-      <div className="relative mx-auto max-w-7xl px-6 pl-6 md:pl-10">
+      <div className="relative max-w-7xl px-6 pl-6 md:pl-10">
         <div className="rounded-[2rem] border border-zinc-200/80 bg-white/90 p-10 text-center shadow-[0_20px_70px_rgba(0,0,0,0.08)] backdrop-blur">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-600">
             Site Activity
@@ -62,9 +62,8 @@ export default function VisitCounter() {
             {realVisits === null ? "—" : `${displayVisits.toLocaleString()}+`}
           </div>
 
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-zinc-600 md:text-lg">
-            People exploring our projects, craftsmanship and construction work
-            across South Florida.
+          <p className="mt-4 max-w-2xl text-base leading-7 text-zinc-600 md:text-lg">
+          Real-time visitors exploring our work since launch our Website.
           </p>
         </div>
       </div>
