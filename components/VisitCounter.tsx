@@ -52,13 +52,13 @@ export default function VisitCounter() {
   return (
     <section className="relative overflow-hidden py-20">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.10),transparent_35%)]" />
-      <div className="relative max-w-7xl px-6 pl-10 md:pl-20">
+      <div className="relative max-w-7xl px-6 -ml-6 md:-ml-12">
         <div className="rounded-[2rem] border border-zinc-200/50 bg-white/60 backdrop-blur-xl p-10 pl-16 text-left shadow-[0_20px_70px_rgba(0,0,0,0.08)]">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-600">
             Site Activity
           </p>
 
-          <div className="mt-4 text-5xl font-bold tracking-tight text-zinc-900 md:text-7xl">
+          <div className="mt-4 text-5xl font-bold tracking-tight text-cyan-400 md:text-7xl drop-shadow-[0_0_12px_rgba(34,211,238,0.6)]">
             {realVisits === null ? "—" : `${displayVisits.toLocaleString()}+`}
           </div>
 
