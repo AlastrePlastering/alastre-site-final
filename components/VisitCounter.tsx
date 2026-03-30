@@ -62,8 +62,8 @@ export default function VisitCounter() {
             {realVisits === null ? "—" : `${displayVisits.toLocaleString()}+`}
           </div>
 
-          <p className="mt-4 max-w-lg text-left text-base leading-7 text-zinc-700 md:text-lg break-words">
-          Real-time visitors exploring our work since launch our Website.
+          <p className="mt-4 max-w-2xl text-left text-base leading-7 text-cyan-600 md:text-lg">
+          Real-time visitors exploring our work since the launch of our Website.
           </p>
         </div>
       </div>
