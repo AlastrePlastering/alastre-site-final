@@ -421,7 +421,7 @@ function BeforeAfterSlider() {
         <img
           src="/images/alastreshell2.jpg"
           alt="Shell construction"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover scale-90"
         />
         <div
           className="absolute left-0 top-0 h-full overflow-hidden"
@@ -430,7 +430,7 @@ function BeforeAfterSlider() {
           <img
             src="/images/stuccofinish.jpg"
             alt="Stucco finish"
-            className="h-full w-full max-w-none object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-90"
             style={{ width: "100vw" }}
           />
         </div>
