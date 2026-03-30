@@ -1066,7 +1066,7 @@ export default function Page() {
         </SocialDockLink>
       </div>
 
-      <header className="sticky top-0 z-50 border-b border-zinc-200/80 bg-white/75 shadow-[0_10px_30px_rgba(0,0,0,0.03)] backdrop-blur-xl">
+      <header className="hidden">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -1092,27 +1092,59 @@ export default function Page() {
             </div>
           </motion.div>
 
-          <nav className="hidden items-center gap-2 text-sm font-medium md:flex">
-            <NavLink href="#home" icon={HomeIcon}>
-              Alastre Home
-            </NavLink>
-            <NavLink href="#services" icon={BriefcaseIcon}>
-              Capabilities
-            </NavLink>
-            <NavLink href="#work" icon={FolderIcon}>
-              Featured Projects
-            </NavLink>
-            <NavLink href="#about" icon={UsersIcon}>
-              Who We Are
-            </NavLink>
-            <NavLink href="#contact" icon={MessageIcon}>
-              Start a Project
-            </NavLink>
-          </nav>
+         
         </div>
       </header>
 
       <section id="home" className="relative isolate overflow-hidden bg-zinc-950 text-white">
+     
+
+      <nav className="absolute top-8 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
+  <a
+    href="#home"
+    className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
+  >
+    <HomeIcon className="h-3.5 w-3.5 text-cyan-300 transition group-hover:text-white" />
+    <span>Alastre Home</span>
+  </a>
+
+  <a
+    href="#services"
+    className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
+  >
+    <BriefcaseIcon className="h-3.5 w-3.5 text-cyan-300 transition group-hover:text-white" />
+    <span>Capabilities</span>
+  </a>
+
+  <a
+    href="#work"
+    className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
+  >
+    <FolderIcon className="h-3.5 w-3.5 text-cyan-300 transition group-hover:text-white" />
+    <span>Featured Projects</span>
+  </a>
+
+  <a
+    href="#about"
+    className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
+  >
+    <UsersIcon className="h-3.5 w-3.5 text-cyan-300 transition group-hover:text-white" />
+    <span>Who We Are</span>
+  </a>
+
+  <a
+    href="#contact"
+    className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
+  >
+    <MessageIcon className="h-3.5 w-3.5 text-cyan-300 transition group-hover:text-white" />
+    <span>Start a Project</span>
+  </a>
+</nav>
+
+
+
+
+
         <div className="absolute inset-0">
           <img
     src="/images/backgroundalastre.jpg"
