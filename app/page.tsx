@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
-import VisitCounter from "@/components/VisitCounter";
+import VisitCounter from "../components/VisitCounter";
 
 function IconBase({
   children,
