@@ -1,5 +1,4 @@
 "use client";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VisitCounter from "../components/VisitCounter";
@@ -437,7 +436,7 @@ function BeforeAfterSlider() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
         <div className="absolute left-5 top-5 rounded-full bg-black/55 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-white backdrop-blur">
-          Finished Interior
+          Finished
         </div>
         <div className="absolute right-5 top-5 rounded-full bg-white/85 px-4 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-zinc-950 backdrop-blur">
           Shell Structure
@@ -721,6 +720,8 @@ function BuildYourVision() {
 }
 
 export default function Page() {
+
+ 
   const shellServices = [
     "Shell construction homes",
     "Concrete foundations and slabs",
@@ -746,18 +747,18 @@ export default function Page() {
 
   const highlights = [
     {
-      title: "Clear Division of Services",
-      text: "Visitors instantly understand what belongs to Alastre Shell and what belongs to Alastre Plastering.",
+      title: "Real Planning",
+      text: "We don’t start blind. Everything is reviewed before work begins.",
       icon: LayersIcon,
     },
     {
-      title: "Professional Presentation",
-      text: "Premium layout, motion, spacing, and detail create a stronger image for clients and builders.",
+      title: "Jobsite Control",
+      text: "Work is organized and moving every day. No chaos, no guessing.",
       icon: ShieldIcon,
     },
     {
-      title: "Built to Convert",
-      text: "The page keeps social links visible at all times and pushes traffic to Instagram and YouTube Shorts.",
+      title: "Clean Delivery",
+      text: "We finish what we start. Clean, complete, and ready.",
       icon: BadgeIcon,
     },
   ];
@@ -803,39 +804,39 @@ export default function Page() {
       description:
         "Shell construction, structural concrete, driveways, sidewalks, and full exterior structural execution.",
       image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80",
+      "/images/shell-structural.jpg",
     },
     {
       title: "Alastre Plastering",
       description:
         "Interior framing, drywall, finish, and build-outs delivered with clean production and detail.",
       image:
-        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+      "/images/framing.jpeg",
     },
     {
       title: "Stucco Systems",
       description:
         "Exterior stucco finishes built with strong prep, durability, and a clean final look.",
       image:
-        "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+      "/images/stucco.jpg",
     },
   ];
 
   const processSteps = [
     {
       step: "01",
-      title: "Project Review",
-      text: "We define the correct division and make the scope feel organized from the start.",
+      title: "Planning & Scope",
+      text: "We define scope clearly from day one. No confusion, no missing items, no surprises during construction.",
     },
     {
       step: "02",
-      title: "Visual Structure",
-      text: "Motion, layers, interactive panels, and stronger sections keep the website alive while the user scrolls.",
+      title: "Field Execution",
+      text: "Work is done on site, not guessed. Proper sequencing, coordination, and steady production from start to finish.",
     },
     {
       step: "03",
-      title: "Conversion Focus",
-      text: "The dock, calls to action, and presentation modules keep attention moving toward your social channels and estimate flow.",
+      title: "Delivery & Standards",
+      text: "Built to pass inspection and meet real job conditions. Clean finish, solid structure, and work that holds over time.",
     },
   ];
 
@@ -951,8 +952,11 @@ export default function Page() {
   
     }
   }
-return (
-    <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
+  return (
+    <>
+      
+  
+      <div className="min-h-screen overflow-x-hidden bg-white text-zinc-900 selection:bg-cyan-100 selection:text-zinc-950">
       <AnimatePresence>
         {showBackToTop ? (
           <motion.button
@@ -1073,7 +1077,7 @@ return (
               <img
                 src="/logos/alastre-plastering.png"
                 alt="Alastre Plastering logo"
-                className="mb-2 h-14 w-auto object-contain"
+                className="mb-3 h-14 w-auto object-contain"
               />
               <span className="text-[11px] font-medium uppercase tracking-[0.35em] text-zinc-500">
                 Alastre Plastering
@@ -1081,11 +1085,7 @@ return (
             </div>
             <span className="text-xs text-zinc-400">•</span>
             <div className="flex flex-col items-center">
-              <img
-                src="/logos/alastre-shell.png"
-                alt="Alastre Shell logo"
-                className="mb-2 h-12 w-auto object-contain"
-              />
+            
               <span className="text-[11px] font-medium uppercase tracking-[0.35em] text-zinc-500">
                 Alastre Shell
               </span>
@@ -1613,8 +1613,9 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         <div className="mx-auto max-w-7xl px-6">
           <SectionTitle
             eyebrow="Featured Work"
-            title="Built to feel alive, not flat."
-            description="This section uses layered cards, stronger spacing, depth, and motion so the site feels premium instead of just text inside boxes."
+            title="Work we’ve actually built."
+            description="Shell, framing, drywall, stucco — done on real jobs, under real schedules.
+            No renders, no stock photos."
             light
           />
 
@@ -1669,9 +1670,9 @@ From concrete and block to framing, drywall, and stucco, everything is done with
 
       <section className="relative overflow-hidden bg-[linear-gradient(to_bottom,rgba(255,255,255,1),rgba(242,252,255,1),rgba(250,245,255,0.45),rgba(255,255,255,1))] py-24">
         <BackgroundTexture
-          src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?auto=format&fit=crop&w=1800&q=80"
+          src="/images/interactive-background.jpg"
           alt="Concrete shell background"
-          opacityClass="opacity-[0.05]"
+          opacityClass="opacity-[0.4]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_right_center,rgba(103,232,249,0.12),transparent_28%),radial-gradient(circle_at_left_bottom,rgba(168,85,247,0.08),transparent_26%)]" />
 
@@ -1687,7 +1688,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
               </h3>
               <p className="mt-4 text-lg leading-8 text-zinc-600">
                 This module makes the site feel alive while showing the range
-                between shell execution and finished interior presentation.
+                between shell execution and  presentation.
               </p>
             </div>
 
@@ -1703,8 +1704,21 @@ From concrete and block to framing, drywall, and stucco, everything is done with
                 We do not build like random trades. We build like a system.
               </h3>
               <p className="mt-4 text-lg leading-8 text-zinc-600">
-                This is the section that tells builders, owners, and developers
-                why your company deserves serious trust.
+              Most crews focus on their trade. We focus on the job.
+We don’t walk into a project to “figure it out” on site.
+We review the plans, understand the scope, and know what’s coming before work begins.
+Once we start, the job doesn’t stall.
+Work is organized, crews stay productive, and decisions are made in real time — not after delays happen.
+We don’t rely on constant rework or last-minute fixes.
+We build with intention from the beginning so the project keeps moving forward instead of slowing down.
+When you work with us, we don’t operate as just another subcontractor.
+We become part of the team — aligned with the GC or the owner — focused on protecting the job, avoiding unnecessary losses, and keeping the project on track.
+Our experience and field knowledge are what drive that approach.
+We understand how jobs actually run, and we act accordingly.
+And when it’s time to finish, we don’t leave loose ends behind.
+The work is complete, clean, and ready — the way it should be delivered.
+That’s the difference:
+Less confusion. Less downtime. Better results on site.
               </p>
             </div>
 
@@ -1738,7 +1752,13 @@ From concrete and block to framing, drywall, and stucco, everything is done with
             <SectionTitle
               eyebrow="About"
               title="Two separate companies, one serious standard."
-              description="Alastre Shell stays focused on shell homes, structural concrete, driveways, and sidewalks. Alastre Plastering stays focused on framing, drywall, finish, and stucco. The site now makes that difference look sharp and intentional."
+              description="Alastre is a construction company focused on execution in the field — not just promises on paper.
+              We handle structural shell, framing, drywall, and stucco with a clear understanding of how each phase connects.
+              That allows the work to move without unnecessary delays or confusion between trades.
+              Our approach is simple: understand the job before starting, keep it moving during construction, and deliver it complete.
+              We don’t work in isolation — we align with the GC or the owner and operate as part of the team, focused on protecting the project and avoiding costly mistakes.
+              Our experience comes from real jobsite conditions, not theory.
+              That’s what allows us to make the right decisions when it matters."
             />
           </div>
 
@@ -1754,7 +1774,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
               <p className="text-xs uppercase tracking-[0.3em] text-zinc-400">
                 Coverage
               </p>
-              <p className="mt-3 text-3xl font-bold">Residential and commercial work</p>
+              <p className="mt-3 text-3xl font-bold">Residential and Commercial</p>
             </motion.div>
 
             <motion.div
@@ -1769,7 +1789,7 @@ From concrete and block to framing, drywall, and stucco, everything is done with
                 Presence
               </p>
               <p className="mt-3 text-3xl font-bold text-zinc-950">
-                Dynamic layout with motion and constant social traffic buttons
+              Follow our work, see real progress, and connect with us directly. No middle steps.
               </p>
             </motion.div>
           </div>
@@ -1807,24 +1827,22 @@ From concrete and block to framing, drywall, and stucco, everything is done with
                 Ready to price your project?
               </h2>
               <p className="mt-5 max-w-xl text-lg leading-8 text-zinc-600">
-                The form is ready for your real phone, email, and estimate
-                workflow. The social dock stays visible at the bottom right
-                across the full page to push traffic to Instagram and YouTube
-                Shorts.
+              Send plans or details and we’ll review the scope and get back to you.
+Clear communication from the start.
               </p>
 
               <div className="mt-8 grid gap-4 text-zinc-700">
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3">
                   <PhoneIcon className="h-5 w-5 text-cyan-600" />
-                  <span>Add your business phone</span>
+                  <span>786-724-6573</span>
                 </motion.div>
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3">
                   <MailIcon className="h-5 w-5 text-cyan-600" />
-                  <span>Add your business email</span>
+                  <span>info@alastreplastering.com</span>
                 </motion.div>
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3">
                   <MapPinIcon className="h-5 w-5 text-fuchsia-500" />
-                  <span>South Florida service area</span>
+                  <span>South Florida Service Area</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -1955,5 +1973,6 @@ From concrete and block to framing, drywall, and stucco, everything is done with
         </div>
       </section>
     </div>
+    </>
   );
 }
