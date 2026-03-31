@@ -6,13 +6,16 @@ body {
   margin: 0;
 }
 
+/* 🔥 LOGO FLOAT ANIMATION */
 @keyframes floatLogo {
   0% {
     transform: translateY(0px);
   }
+
   50% {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
+
   100% {
     transform: translateY(0px);
   }
