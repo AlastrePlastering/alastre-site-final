@@ -6,7 +6,6 @@ body {
   margin: 0;
 }
 
-/* 🔥 ANIMACIÓN LOGO */
 @keyframes floatLogo {
   0% {
     transform: translateY(0px);
