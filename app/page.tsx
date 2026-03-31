@@ -921,17 +921,24 @@ export default function Page() {
       setContactSending(true);
       setContactStatus("");
   
+      const payload = {
+        name: contactName,
+        email: contactEmail,
+        phone: contactPhone,
+        message: contactMessage,
+  
+        // 🔥 TRACKING (LO NUEVO)
+        userAgent: navigator.userAgent,
+        pageUrl: window.location.href,
+        referrer: document.referrer || "Direct",
+      };
+  
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: contactName,
-          email: contactEmail,
-          phone: contactPhone,
-          message: contactMessage,
-        }),
+        body: JSON.stringify(payload),
       });
   
       const data = await res.json();
@@ -950,7 +957,6 @@ export default function Page() {
       setContactStatus("Something went wrong.");
     } finally {
       setContactSending(false);
-  
     }
   }
   return (
@@ -1839,7 +1845,7 @@ Less confusion. Less downtime. Better results on site.
           opacityClass="opacity-[0.035]"
         />
         <BackgroundTexture
-          src="images/alastre-contact.jpg"
+          src="images/alastre-contact.JPG"
           alt="Stucco wall texture"
           opacityClass="opacity-[0.080]"
         />

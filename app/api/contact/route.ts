@@ -3,7 +3,15 @@ import { Resend } from "resend";
 
 export async function POST(req: Request) {
   try {
-    const { name, email, phone, message } = await req.json();
+    const {
+      name,
+      email,
+      phone,
+      message,
+      userAgent,
+      pageUrl,
+      referrer,
+    } = await req.json();
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -27,6 +35,41 @@ export async function POST(req: Request) {
     const safeEmail = escapeHtml(email);
     const safePhone = escapeHtml(phone || "N/A");
     const safeMessage = escapeHtml(message);
+    const safeUserAgent = escapeHtml(userAgent || "Unknown");
+    const safePageUrl = escapeHtml(pageUrl || "Unknown");
+    const safeReferrer = escapeHtml(referrer || "Direct");
+
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const ip =
+      forwardedFor?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "Unknown";
+
+    const safeIp = escapeHtml(ip);
+
+    let geo: {
+      city?: string;
+      region?: string;
+      country_name?: string;
+    } | null = null;
+
+    try {
+      if (ip && ip !== "Unknown") {
+        const geoRes = await fetch(`https://ipapi.co/${ip}/json/`, {
+          cache: "no-store",
+        });
+
+        if (geoRes.ok) {
+          geo = await geoRes.json();
+        }
+      }
+    } catch (geoError) {
+      console.error("Geo lookup failed:", geoError);
+    }
+
+    const safeCity = escapeHtml(geo?.city || "Unknown");
+    const safeRegion = escapeHtml(geo?.region || "Unknown");
+    const safeCountry = escapeHtml(geo?.country_name || "Unknown");
 
     const logoUrl = "https://www.alastreplastering.com/logos/alastre-plastering.png";
 
@@ -57,6 +100,17 @@ export async function POST(req: Request) {
 
           <hr style="margin:24px 0;" />
 
+          <h3 style="margin-bottom:12px;">Lead Tracking Info</h3>
+          <p><strong>IP Address:</strong> ${safeIp}</p>
+          <p><strong>Device / Browser:</strong> ${safeUserAgent}</p>
+          <p><strong>Page URL:</strong> ${safePageUrl}</p>
+          <p><strong>Referrer:</strong> ${safeReferrer}</p>
+          <p><strong>City:</strong> ${safeCity}</p>
+          <p><strong>Region:</strong> ${safeRegion}</p>
+          <p><strong>Country:</strong> ${safeCountry}</p>
+
+          <hr style="margin:24px 0;" />
+
           <p style="font-size:12px; color:#777;">
             Sent from AlastrePlastering.com
           </p>
@@ -80,7 +134,6 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.7; color: #111; padding: 20px;">
 
-          <!-- LOGO ARRIBA -->
           <div style="text-align:center; margin-bottom:20px;">
             <img src="${logoUrl}" style="max-width:180px;" />
           </div>
@@ -113,9 +166,7 @@ export async function POST(req: Request) {
             We appreciate the opportunity and look forward to working with you.
           </p>
 
-          <!-- FIRMA -->
           <div style="margin-top:30px; text-align:center;">
-
             <img src="${logoUrl}" style="max-width:140px; margin-bottom:10px;" />
 
             <p>
