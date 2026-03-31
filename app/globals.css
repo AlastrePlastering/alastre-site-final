@@ -8,12 +8,12 @@ body {
 
 @keyframes floatLogo {
   0% {
-    transform: translateY(0px) !important;
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-12px) !important;
+    transform: translateY(-14px);
   }
   100% {
-    transform: translateY(0px) !important;
+    transform: translateY(0px);
   }
 }
