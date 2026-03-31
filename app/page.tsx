@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VisitCounter from "../components/VisitCounter";
 
+
 function IconBase({
   children,
   className = "h-5 w-5",
@@ -1838,9 +1839,9 @@ Less confusion. Less downtime. Better results on site.
           opacityClass="opacity-[0.035]"
         />
         <BackgroundTexture
-          src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=1800&q=80"
+          src="images/alastre-contact.jpg"
           alt="Stucco wall texture"
-          opacityClass="opacity-[0.025]"
+          opacityClass="opacity-[0.080]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(6,182,212,0.16),transparent_28%),radial-gradient(circle_at_left_center,rgba(168,85,247,0.12),transparent_22%)]" />
 
@@ -1960,44 +1961,95 @@ Clear communication from the start.
             className="relative mt-20 overflow-hidden rounded-[2.25rem] border border-white/10 bg-zinc-950 px-8 py-10 text-white shadow-[0_25px_90px_rgba(0,0,0,0.35)]"
           >
             <BackgroundTexture
-              src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80"
+              src="images/alastre-final1.png"
               alt="Construction footer background"
-              opacityClass="opacity-[0.10]"
+              opacityClass="opacity-[0.90]"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(6,182,212,0.18),rgba(9,9,11,0.95),rgba(168,85,247,0.16))]" />
+            <div className="absolute inset-30 bg-[linear-gradient(135deg,rgba(6,182,212,0.18),rgba(9,9,11,0.95),rgba(168,85,247,0.16))]" />
             <div className="relative grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.35em] text-cyan-200/80">
-                  Final Section
+                  Alastre Plastering and Alastre Shell
                 </p>
                 <h3 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                  Built for strong first impressions and real client trust.
+                WE DON’T BUILD ALONE
                 </h3>
+                <h4 className="mt-9 text-3xl md:text-2xl font-bold tracking-tight text-center relative group">
+
+  <span className="relative z-10 bg-gradient-to-r from-white via-cyan-300 to-white bg-clip-text text-transparent">
+    Powered by trusted partners like
+  </span>
+
+  {/* glow */}
+  <span className="absolute inset-0 blur-xl opacity-20 bg-cyan-400"></span>
+
+  {/* energy line */}
+  <span className="absolute left-1/2 -bottom-2 h-[2px] w-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-transparent transition-all duration-500 group-hover:w-[60%] group-hover:left-[20%]"></span>
+
+</h4>
                 <p className="mt-4 max-w-xl text-lg leading-8 text-zinc-300">
-                  This footer can later hold your real phone, email, quote link,
-                  project gallery, or direct lead form without feeling empty at
-                  the end of the page.
+                  
+
+
+
+
                 </p>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-3">
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur">
                   <p className="text-[10px] uppercase tracking-[0.26em] text-zinc-400">
-                    Brand Split
+                  <a 
+href="https://fullpowerconcrete.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  className="text-cyan-400 hover:underline"
+>
+  Full Power Concrete
+</a>
                   </p>
-                  <p className="mt-3 text-xl font-bold">Shell + Plastering</p>
+                  <a
+  href="https://fullpowerconcrete.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-3 flex flex-col items-center text-white relative group transition duration-300 hover:text-cyan-400"
+>
+  {/* LOGO ARRIBA */}
+  <motion.img
+  src="/images/full-power-logo.jpg"
+  alt="Full Power Concrete"
+  className="h-20 w-auto mb-2 object-contain opacity-95 drop-shadow-[0_0_10px_rgba(255,60,60,0.35)]"
+  animate={{ y: [0, -12, 0] }}
+  transition={{
+    duration: 1.5,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
+
+  {/* TEXTO (LO MANTUVIMOS IGUAL) */}
+  <span className="relative text-sm font-semibold tracking-tight">
+    Full Power Concrete
+
+    {/* underline animado */}
+    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
+  </span>
+
+  {/* glow hover */}
+  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 blur-md bg-cyan-400/20 transition duration-300"></span>
+</a>
                 </div>
                 <div className="rounded-[1.5rem] border border-cyan-300/20 bg-cyan-300/10 p-5 backdrop-blur">
                   <p className="text-[10px] uppercase tracking-[0.26em] text-cyan-100/70">
-                    Color Energy
+                    Coming Soon
                   </p>
-                  <p className="mt-3 text-xl font-bold">Turquoise + Violet</p>
+                  <p className="mt-3 text-xl font-bold">Coming Soon</p>
                 </div>
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur">
                   <p className="text-[10px] uppercase tracking-[0.26em] text-zinc-400">
-                    Lead Ready
+                    Coming Soon
                   </p>
-                  <p className="mt-3 text-xl font-bold">Estimate Flow</p>
+                  <p className="mt-3 text-xl font-bold">Coming Soon</p>
                 </div>
               </div>
             </div>
