@@ -418,7 +418,7 @@ function BeforeAfterSlider() {
 
   return (
     <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-      <div className="relative h-[420px] w-full">
+      <div className="relative h-[260px] sm:h-[320px] md:h-[420px] w-full">
         <img
           src="/images/alastreshell2.jpg"
           alt="Shell construction"
@@ -974,7 +974,7 @@ export default function Page() {
             transition={{ type: "spring", stiffness: 260, damping: 18 }}
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="fixed bottom-[24rem] right-4 z-[90] group md:right-5"
+            className="fixed bottom-24 right-4 z-[90] group md:bottom-10 md:right-5"
           >
             <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[1.7rem] border border-cyan-300/30 bg-zinc-950/95 text-white shadow-[0_20px_50px_rgba(6,182,212,0.30)] backdrop-blur-xl transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(6,182,212,0.38)]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(103,232,249,0.24),transparent_42%),radial-gradient(circle_at_75%_75%,rgba(168,85,247,0.16),transparent_38%)]" />
@@ -1162,7 +1162,7 @@ export default function Page() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(103,232,249,0.18),transparent_24%),radial-gradient(circle_at_82%_78%,rgba(103,232,249,0.14),transparent_24%),radial-gradient(circle_at_60%_30%,rgba(168,85,247,0.10),transparent_22%)]" />
         </div>
 
-        <div className="fixed left-5 top-28 z-[65] hidden flex-col gap-4 xl:flex">
+        <div className="fixed left-5 top-28 z-[65] hidden flex-col gap-4 hidden">
           <motion.div
             drag
             dragMomentum={false}
@@ -1371,12 +1371,12 @@ export default function Page() {
               South Florida Construction
             </div>
 
-            <h1 className="text-5xl font-black leading-[0.95] tracking-tight md:text-7xl">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.95] tracking-tight">
               Two companies. <br />
               One powerful presence.
             </h1>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl">
+            <p className="mt-6 max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg md:text-xl">
               <span className="font-semibold text-white">
                 Alastre Plastering
               </span>{" "}
@@ -2022,7 +2022,7 @@ href="https://fullpowerconcrete.com"
 >
   {/* LOGO ARRIBA */}
   <motion.img
-  src="/images/full-power-logo.jpg"
+  src="/images/full-power-logo.png"
   alt="Full Power Concrete"
   className="h-20 w-auto mb-2 object-contain opacity-95 drop-shadow-[0_0_10px_rgba(255,60,60,0.35)]"
   animate={{ y: [0, -12, 0] }}
