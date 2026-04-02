@@ -1109,11 +1109,11 @@ export default function Page() {
       <nav className="absolute top-8 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
   
       
-      <div className="absolute top-[-70px] left-1/2 -translate-x-1/2 z-20">
+      <div className="absolute top-[-1px] left-1/2 -translate-x-1/2 z-20">
   <img
     src="/images/alastre-logo.png"
     alt="Alastre Logo"
-    className="w-[100px] md:w-[400px] h-auto object-contain"
+    className="w-[300px] md:w-[400px] h-auto object-contain"
   />
 </div>
 
