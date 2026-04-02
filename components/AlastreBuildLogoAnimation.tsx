@@ -65,3 +65,6 @@ export default function AlastreImpactLogoAnimation() {
       <div className="absolute inset-0 overflow-hidden">
         
       </div>
+      </section>
+  );
+}
