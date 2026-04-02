@@ -812,14 +812,14 @@ export default function Page() {
       description:
         "Interior framing, drywall, finish, and build-outs delivered with clean production and detail.",
       image:
-      "/images/framing.jpeg",
+      "/images/framing-framing.jpg",
     },
     {
       title: "Stucco Systems",
       description:
         "Exterior stucco finishes built with strong prep, durability, and a clean final look.",
       image:
-      "/images/stucco.jpg",
+      "/images/stucco-stucco.jpg",
     },
   ];
 
