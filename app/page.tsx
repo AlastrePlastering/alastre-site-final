@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VisitCounter from "../components/VisitCounter";
+import Link from "next/link";
 
 
 function IconBase({
@@ -1109,7 +1110,7 @@ export default function Page() {
       <nav className="absolute top-8 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
   
       
-      <div className="absolute top-[-20px] left-1/2 -translate-x-1/2 z-20">
+      <div className="pointer-events-none absolute top-[-20px] left-1/2 -translate-x-1/2 z-20">
   <img
     src="/images/alastre-logo.png"
     alt="Alastre Logo"
@@ -1691,32 +1692,44 @@ From concrete and block to framing, drywall, and stucco, everything is done with
           </div>
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.7, delay: index * 0.08 }}
-                whileHover={{ y: -8 }}
-                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl backdrop-blur"
-              >
-                <div className="overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-64 w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-[1deg]"
-                  />
-                </div>
-                <div className="p-7">
-                  <h3 className="text-2xl font-bold">{project.title}</h3>
-                  <p className="mt-4 leading-7 text-zinc-300">
-                    {project.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+  {projects.map((project, index) => {
+    const isShell = project.title === "Alastre Shell";
+
+    const card = (
+      <motion.div
+        key={project.title}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ duration: 0.7, delay: index * 0.08 }}
+        whileHover={{ y: -8 }}
+        className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-2xl backdrop-blur cursor-pointer"
+      >
+        <div className="overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="h-64 w-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-[1deg]"
+          />
+        </div>
+        <div className="p-7">
+          <h3 className="text-2xl font-bold">{project.title}</h3>
+          <p className="mt-4 leading-7 text-zinc-300">
+            {project.description}
+          </p>
+        </div>
+      </motion.div>
+    );
+
+    return isShell ? (
+      <Link key={project.title} href="/alastre-shell" className="block">
+        {card}
+      </Link>
+    ) : (
+      <div key={project.title}>{card}</div>
+    );
+  })}
+</div>
         </div>
       </section>
 
