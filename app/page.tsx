@@ -1107,6 +1107,13 @@ export default function Page() {
      
 
       <nav className="absolute top-8 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2">
+  
+      
+
+
+
+  
+  
   <a
     href="#home"
     className="group inline-flex h-9 items-center gap-2 whitespace-nowrap rounded-full border border-cyan-300/20 bg-[linear-gradient(180deg,rgba(7,18,30,0.88),rgba(10,26,44,0.72))] px-4 text-[11px] font-semibold leading-none tracking-[0.08em] text-cyan-300 shadow-[0_8px_24px_rgba(6,182,212,0.14)] backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-cyan-300/40 hover:text-white"
@@ -1148,7 +1155,13 @@ export default function Page() {
   </a>
 </nav>
 
-
+<div className="absolute top--3 left-1/2 -translate-x-1/2 z-20">
+  <img
+    src="/images/alastre-logo.png"
+    alt="Alastre Logo"
+    className="w-[100px] md:w-[400px] h-auto object-contain"
+  />
+</div>
 
 
 
