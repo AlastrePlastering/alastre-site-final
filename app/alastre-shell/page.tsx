@@ -16,25 +16,26 @@ const shortVideos = [
 
 const projects = [
   {
-    name: "Golan Residence",
+    name: "Golan Casita Residence",
     description:
-      "Full shell execution including structural concrete, masonry, tie beams, columns, and slab work.",
+      "12,000+ sqft residential shell construction, covering excavation, structural elements, and roof system through sheathing.",
     cover: "/images/projects/golan/golan-1.jpg",
     images: [
-      "/images/projects/golan/golan-1.jpg",
       "/images/projects/golan/golan-2.jpg",
       "/images/projects/golan/golan-3.jpg",
+      "/images/projects/golan/golan-4.jpg",
     ],
   },
   {
-    name: "Pinecrest Residence",
+    name: "Bucare Guest House",
+    
     description:
-      "Structural shell work with concrete, block, coordination, and clean field production.",
-    cover: "/images/projects/pinecrest/pinecrest-1.jpg",
+      "1200+ sqft structural shell work with concrete, block, coordination, and disciplined field execution — executed with full code compliance, respect for the owner’s trust, and a clear commitment to our role on site.",
+    cover: "/images/projects/bucare/bucare-1.jpg",
     images: [
-      "/images/projects/pinecrest/pinecrest-1.jpg",
-      "/images/projects/pinecrest/pinecrest-2.jpg",
-      "/images/projects/pinecrest/pinecrest-3.jpg",
+      "/images/projects/bucare/bucare-2.jpg",
+      "/images/projects/bucare/bucare-3.jpg",
+      "/images/projects/bucare/bucare-4.jpg",
     ],
   },
   {
@@ -455,7 +456,7 @@ function HeroShortsPlayer() {
           Alastre Shell
         </div>
         <h2 className="text-lg font-semibold leading-tight tracking-[-0.03em] sm:text-2xl md:text-[2rem] xl:text-[2.35rem]">
-          Serious shell execution with a premium presentation.
+        Structure first. Presence always.
         </h2>
       </div>
     </div>
@@ -638,9 +639,7 @@ export default function AlastreShellPage() {
                 </h1>
 
                 <p className="mt-5 max-w-2xl text-sm leading-6 text-white/72 sm:text-base sm:leading-7 md:text-lg">
-                  Shell construction, structural concrete, driveways, sidewalks,
-                  block, slabs, columns, tie beams, and full exterior structural
-                  execution.
+                Complete structural execution — concrete, block, and shell systems built with precision.
                 </p>
 
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -688,11 +687,11 @@ export default function AlastreShellPage() {
                 className="relative overflow-hidden rounded-[20px] border border-white/10 bg-white/[0.045] p-5 shadow-[0_16px_40px_rgba(0,0,0,0.32)] backdrop-blur-xl sm:rounded-[24px]"
               >
                 <div className="relative flex h-full items-center justify-center">
-                  <img
-                    src="/images/alastre-shell-logo.png"
-                    alt="Alastre Shell logo"
-                    className="h-auto max-h-[60px] w-auto object-contain sm:max-h-[80px] md:max-h-[90px]"
-                  />
+                <img
+  src="/images/alastre-contact.JPG"
+  alt="Alastre Shell logo"
+  className="h-[90px] sm:h-[120px] md:h-[160px] lg:h-[180px] w-auto object-contain"
+/>
                 </div>
               </motion.div>
 
@@ -740,14 +739,29 @@ export default function AlastreShellPage() {
             className="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
           >
             <div>
-              <SectionTag>Company Video</SectionTag>
-              <h2 className="mt-4 text-2xl font-semibold tracking-[-0.05em] sm:text-4xl md:text-5xl lg:text-6xl">
-                Show the work.
-              </h2>
+            <Link
+  href="https://www.youtube.com/@AlastrePlastering/shorts"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="group block cursor-pointer rounded-[24px] transition-all duration-300"
+>
+  <div className="rounded-[24px] border border-white/10 bg-white/[0.03] p-4 transition-all duration-300 group-hover:border-red-500/40 group-hover:bg-white/[0.05] group-hover:shadow-[0_0_35px_rgba(255,0,0,0.18)]">
+    <SectionTag className="transition duration-300 group-hover:text-red-400">
+      Watch More On YouTube
+    </SectionTag>
+
+    <h2 className="mt-4 text-2xl font-semibold tracking-[-0.05em] transition-all duration-300 group-hover:scale-[1.01] group-hover:text-white sm:text-4xl md:text-5xl lg:text-6xl">
+      Built - Not Explained.
+    </h2>
+  </div>
+</Link>
             </div>
 
             <p className="max-w-2xl text-sm leading-6 text-white/62 sm:text-base">
-              Video from Alastre Plastering.
+               
+
+
+
             </p>
           </motion.div>
 

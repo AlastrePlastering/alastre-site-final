@@ -1570,60 +1570,125 @@ From concrete and block to framing, drywall, and stucco, everything is done with
               })}
             </div>
 
-            <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-              <BackgroundTexture
-                src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1800&q=80"
-                alt="Construction texture"
-                opacityClass="opacity-[0.02]"
-              />
-              <AquaGlow className="-right-10 -top-10 h-48 w-48" />
+            {activeService.name === "Alastre Shell" ? (
+  <Link href="/alastre-shell" className="block">
+    <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)] cursor-pointer transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(6,182,212,0.14)]">
+      <BackgroundTexture
+        src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1800&q=80"
+        alt="Construction texture"
+        opacityClass="opacity-[0.02]"
+      />
+      <AquaGlow className="-right-10 -top-10 h-48 w-48" />
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeService.key}
-                  initial={{ opacity: 0, y: 18 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -18 }}
-                  transition={{ duration: 0.35 }}
-                  className="relative"
-                >
-                  <div className="mb-6 flex items-center gap-4">
-                    <div className="rounded-2xl bg-zinc-950 p-3 text-white shadow-lg shadow-cyan-200/20">
-                      <ActiveServiceIcon className="h-6 w-6" />
-                    </div>
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-cyan-600">
-                        Interactive View
-                      </p>
-                      <h3 className="text-3xl font-bold text-zinc-950">
-                        {activeService.name}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="max-w-2xl text-lg leading-8 text-zinc-600">
-                    {activeService.subtitle}. This section gives the page more
-                    movement and lets visitors interact instead of only reading
-                    static blocks.
-                  </p>
-
-                  <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                    {activeService.services.map((service, index) => (
-                      <motion.div
-                        key={service}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, delay: index * 0.05 }}
-                        whileHover={{ y: -4 }}
-                        className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-zinc-700 transition hover:border-cyan-200 hover:bg-cyan-50/40"
-                      >
-                        {service}
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeService.key}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -18 }}
+          transition={{ duration: 0.35 }}
+          className="relative"
+        >
+          <div className="mb-6 flex items-center gap-4">
+            <div className="rounded-2xl bg-zinc-950 p-3 text-white shadow-lg shadow-cyan-200/20">
+              <ActiveServiceIcon className="h-6 w-6" />
             </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-cyan-600">
+                Interactive View
+              </p>
+              <h3 className="text-3xl font-bold text-zinc-950 transition group-hover:text-cyan-600">
+                {activeService.name}
+              </h3>
+            </div>
+          </div>
+
+          <p className="max-w-2xl text-lg leading-8 text-zinc-600">
+            {activeService.subtitle}. This section gives the page more
+            movement and lets visitors interact instead of only reading
+            static blocks.
+          </p>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+            {activeService.services.map((service, index) => (
+              <motion.div
+                key={service}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: index * 0.05 }}
+                whileHover={{ y: -4 }}
+                className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-zinc-700 transition hover:border-cyan-200 hover:bg-cyan-50/40"
+              >
+                {service}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  </Link>
+) : (
+  <div className="relative overflow-hidden rounded-[2rem] border border-zinc-200 bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+    <BackgroundTexture
+      src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1800&q=80"
+      alt="Construction texture"
+      opacityClass="opacity-[0.02]"
+    />
+    <AquaGlow className="-right-10 -top-10 h-48 w-48" />
+
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={activeService.key}
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -18 }}
+        transition={{ duration: 0.35 }}
+        className="relative"
+      >
+        <div className="mb-6 flex items-center gap-4">
+          <div className="rounded-2xl bg-zinc-950 p-3 text-white shadow-lg shadow-cyan-200/20">
+            <ActiveServiceIcon className="h-6 w-6" />
+          </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-600">
+              Interactive View
+            </p>
+            <h3
+  className={`text-3xl font-bold transition ${
+    activeService.name === "Alastre Shell"
+      ? "text-cyan-500 drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]"
+      : "text-zinc-950"
+  }`}
+>
+  {activeService.name}
+</h3>
+          </div>
+        </div>
+
+        <p className="max-w-2xl text-lg leading-8 text-zinc-600">
+          {activeService.subtitle}. This section gives the page more
+          movement and lets visitors interact instead of only reading
+          static blocks.
+        </p>
+
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {activeService.services.map((service, index) => (
+            <motion.div
+              key={service}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: index * 0.05 }}
+              whileHover={{ y: -4 }}
+              className="rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4 text-zinc-700 transition hover:border-cyan-200 hover:bg-cyan-50/40"
+            >
+              {service}
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </AnimatePresence>
+  </div>
+)}
           </div>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -1843,20 +1908,32 @@ Less confusion. Less downtime. Better results on site.
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.7, delay: 0.12 }}
-              whileHover={{ y: -6 }}
-              className="rounded-[2rem] border border-zinc-200 bg-zinc-50 p-8 shadow-xl"
-            >
-              <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
-                Presence
-              </p>
-              <p className="mt-3 text-3xl font-bold text-zinc-950">
-              Follow our work, see real progress, and connect with us directly. No middle steps.
-              </p>
-            </motion.div>
+  onClick={() => {
+    document
+      .getElementById("services")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }}
+  whileHover={{ y: -6, scale: 1.02 }}
+  className="cursor-pointer relative overflow-hidden rounded-[2rem] border border-cyan-300/30 bg-white p-7 shadow-[0_18px_50px_rgba(0,0,0,0.05)] transition duration-300 hover:shadow-[0_25px_70px_rgba(34,211,238,0.25)]"
+>
+  {/* 🔥 Glow background */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_60%)] opacity-0 transition duration-300 group-hover:opacity-100" />
+
+  <div className="relative">
+    <p className="text-xs uppercase tracking-[0.3em] text-cyan-600">
+      PRESENCE
+    </p>
+
+    <h3 className="mt-3 text-xl font-bold text-zinc-950 transition duration-300 hover:text-cyan-500">
+      Follow our work
+    </h3>
+
+    <p className="mt-3 text-zinc-600">
+      Follow our work, see real progress, and connect with us directly.
+      No middle steps.
+    </p>
+  </div>
+</motion.div>
           </div>
         </div>
       </section>
