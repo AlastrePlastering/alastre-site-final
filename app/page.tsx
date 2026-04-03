@@ -806,21 +806,21 @@ export default function Page() {
       description:
         "Shell construction, structural concrete, driveways, sidewalks, and full exterior structural execution.",
       image:
-      "/images/shell-structural.jpg",
+      "/images/shell-structural.jpg?v=2",
     },
     {
       title: "Alastre Plastering",
       description:
         "Interior framing, drywall, finish, and build-outs delivered with clean production and detail.",
       image:
-      "/images/framing-framing.jpg",
+      "/images/framing-framing.jpg?v=2",
     },
     {
       title: "Stucco Systems",
       description:
         "Exterior stucco finishes built with strong prep, durability, and a clean final look.",
       image:
-      "/images/stucco-stucco.jpg",
+      "/images/stucco-stucco.jpg?v=2",
     },
   ];
 
