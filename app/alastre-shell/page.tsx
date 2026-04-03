@@ -60,14 +60,8 @@ function SectionTag({
 }) {
   return (
     <div
-      className={`inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-300 ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-zinc-300 ${className}`}
     >
-      {children}
-    </div>
-  );
-}
-  return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] uppercase tracking-[0.24em] text-white/70 backdrop-blur-md sm:px-4 sm:text-[11px]">
       <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
       {children}
     </div>
@@ -75,6 +69,7 @@ function SectionTag({
 }
 
 function PremiumBackButton({ compact = false }: { compact?: boolean }) {
+  
   return (
     <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
       <Link
