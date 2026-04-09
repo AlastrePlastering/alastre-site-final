@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Alastre Plastering",
   },
   description:
-    "Alastre Plastering provides framing, drywall, finish, stucco, shell construction, sidewalks, concrete, rebar and columns in Miami, Homestead and South Florida.",
+  "Alastre Plastering is a high-end framing, drywall, stucco and shell contractor in Miami and South Florida. We specialize in new construction, custom homes and structural concrete work from foundation to finish.",
   keywords: [
     "framing contractor miami",
     "drywall contractor miami",
@@ -23,6 +23,16 @@ export const metadata: Metadata = {
     "columns concrete contractor",
     "residential contractor miami",
     "commercial contractor south florida",
+    "drywall contractor for new construction miami",
+    "stucco contractor for custom homes south florida",
+    "shell contractor for residential construction florida",
+    "luxury home construction miami",
+    "custom home shell contractor florida",
+    "high end construction contractor miami",
+    "precision concrete contractor miami",
+    "gemstonegc.com",
+    "gemstonebuilders",
+
   ],
   alternates: {
     canonical: "https://www.alastreplastering.com",
@@ -37,7 +47,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/alastre-final.jpg",
         width: 1200,
         height: 630,
         alt: "Alastre Plastering construction services",
@@ -58,7 +68,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/favicon.ico",
   },
 };
 
